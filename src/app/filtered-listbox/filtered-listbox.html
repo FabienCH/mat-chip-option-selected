@@ -1,0 +1,21 @@
+@if (viewModel(); as viewModel) {
+<div class="filter">
+  <p class="filter__label">Gender:</p>
+  @for (teamFilter of viewModel.filters; track teamFilter.value) {
+  <mat-checkbox class="filter__checkbox" [checked]="teamFilter.isChecked"
+    (change)="teamsFiltersChanged($event.checked, teamFilter.value)">{{teamFilter.label}}</mat-checkbox>
+  }
+</div>
+@if (viewModel.currentTeamId) {
+<h4>Teams</h4>
+<mat-chip-listbox (change)="onSelectedTeamChange($event)">
+  @for (option of viewModel.options; track option.id) {
+  <div>
+    SELECTED {{option.selected}}
+    <mat-chip-option [value]="option.id" [selectable]="true" [selected]="option.selected"
+      [disabled]="option.selected">{{option.label}}</mat-chip-option>
+  </div>
+  }
+</mat-chip-listbox>
+}
+}
