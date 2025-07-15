@@ -2,6 +2,18 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
 
+This is an example repository to illustrate a bug in Material chip option. When the selected property changes, there is a case where the selected CSS classes are not applied. 
+
+## App behavior
+On this app, we have a list of selectable teams and the possibility to filter them by gender (male or female). By default the 1st team is selected. On this app, we also want the selected team to be changed to the first matching the current filter if the currently selected team does not match the filter.
+
+I have also set the disabled attribute with the same property as selected to show that this one works properly. 
+
+## How to reprpoduce
+ - When changing the gender filter (unselect male) without changing the selected team, the selected CSS classes are applied to the selected team (team 1 female).
+ - When changing the selected team by clicking on an option the selected CSS classes are applied.
+ - When changing the selected team by clicking on an option (click on a male team for example) then changing the gender filter (unselect male) the selected CSS classes are not applied. You can see that the selected property of the option is true and the disabled CCS classes are applied
+
 ## Development server
 
 To start a local development server, run:
